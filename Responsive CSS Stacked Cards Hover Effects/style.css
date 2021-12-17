@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #2e557c;
+    transition: .5s;
+
+}
+body::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-color: #305fa5;
+    clip-path: circle(250px at center)
+}
+.container{
+    position: relative;
+    width: 1100px;
+    height: 400px;
+}
+.card{
+    transition: .5s;
+    position: absolute;
+    top: calc(50% - 200px);
+    left: 50%;
+    width: 300px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    transform: translateX(-50%) translateY(calc(50px * var(--i))) rotate(40deg) skew(-20deg, -10deg) scale(.6);
+    box-shadow: 25px 25px 100px rgba(0,0,0, .2);
+    z-index: calc(-1 * var(--i));
+}
+.container .card:nth-child(2){
+    opacity: 0.8;
+}
+.container .card:nth-child(3){
+    opacity: 0.6;
+}
+.container:hover .card{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    opacity: 1;
+    transform: translateX(calc(-50% + var(--i) * 350px)) translateY(-50%) rotate(0deg) skew(0deg) scale(1);
+
+}
+.content{
+    opacity: 0;
+    transition: .5s;
+    
+    padding: 5%;
+    transform: translateY(50px);
+}
+.content h1{
+    margin-bottom: 10px;
+    color: aqua;
+}
+.container:hover .content{
+    opacity: 1;
+    transition-delay: calc(var(--j) * .2s)  ;
+    transform: translateY(0px);
+
+
+}
+@media(max-width:1000px){
+    body::before{
+        width: 0;
+    }
+    .container{
+        display: flex;
+        justify-content: space-around;
+        width: 100vw;
+        flex-wrap: wrap;
+
+    }
+    .container:hover .card{
+        top: 0;
+        left: 0;
+        /* margin: 100px; */
+        position: relative !important;
+        transform: translateY(0%) translateX(0) rotate(0) scale(1) skew(0);
+    }
+    .card{
+        opacity: 1 !important;
+        top: 0;
+        margin: 10px 0;
+        left: 0;
+        position: relative !important;
+        transform: translateY(0) translateX(0) rotate(0) scale(1) skew(0);
+    }
+    .content{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@media(max-width: 350px){
+    .card{
+        font-size: 13px;
+        margin: 10px 10px;
+        width: 100%;
+    }
+}

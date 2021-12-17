@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box ;
+}
+
+section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #250821;
+}
+.blob{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 10px;
+}
+.blob:nth-child(2){
+    backdrop-filter: blur(150px) ;
+}
+
